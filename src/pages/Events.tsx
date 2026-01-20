@@ -1,15 +1,19 @@
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
+
 import Layout from '@/components/Layout';
 import EventCarousel from '@/components/EventCarousel';
 import SectionHeader from '@/components/SectionHeader';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
 import { Calendar, MapPin, ArrowRight } from 'lucide-react';
 
 import eventTalentShow from '@/assets/event-talent-show.jpg';
 import eventDanceFest from '@/assets/event-dance-fest.jpg';
 import eventMusicNight from '@/assets/event-music-night.jpg';
 import eventFashionWeek from '@/assets/event-fashion-week.jpg';
+
+/* -------------------- EVENTS DATA -------------------- */
 
 const events = [
   {
@@ -18,7 +22,8 @@ const events = [
     date: 'March 15-17, 2026',
     location: 'Mumbai, India',
     image: eventTalentShow,
-    description: 'The biggest talent hunt of the year. Showcase your skills and compete with the best performers across all categories.',
+    description:
+      'The biggest talent hunt of the year. Showcase your skills and compete with the best performers across all categories.',
   },
   {
     id: 2,
@@ -26,7 +31,8 @@ const events = [
     date: 'April 20-22, 2026',
     location: 'Delhi, India',
     image: eventDanceFest,
-    description: 'A celebration of movement and rhythm. From classical to contemporary, find your groove at this prestigious dance event.',
+    description:
+      'A celebration of movement and rhythm. From classical to contemporary, find your groove at this prestigious dance event.',
   },
   {
     id: 3,
@@ -34,7 +40,8 @@ const events = [
     date: 'May 10, 2026',
     location: 'Bangalore, India',
     image: eventMusicNight,
-    description: 'Your voice deserves to be heard. Join us for an electrifying night of musical performances and discoveries.',
+    description:
+      'Your voice deserves to be heard. Join us for an electrifying night of musical performances and discoveries.',
   },
   {
     id: 4,
@@ -42,14 +49,15 @@ const events = [
     date: 'June 5-8, 2026',
     location: 'Mumbai, India',
     image: eventFashionWeek,
-    description: 'Walk the runway at one of India\'s most prestigious fashion events. Models and designers unite!',
+    description:
+      "Walk the runway at one of India's most prestigious fashion events. Models and designers unite!",
   },
 ];
 
 const upcomingEvents = [
   {
     id: 5,
-    title: 'Actor\'s Workshop & Audition',
+    title: "Actor's Workshop & Audition",
     date: 'July 12, 2026',
     location: 'Chennai, India',
     image: eventTalentShow,
@@ -73,7 +81,17 @@ const upcomingEvents = [
   },
 ];
 
+/* -------------------- COMPONENT -------------------- */
+
 const Events = () => {
+  const location = useLocation();
+
+  // message when coming from "Apply Now" button
+  const showInitialMessage = location.state?.fromApplyNow;
+
+  // selected event state
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -82,8 +100,17 @@ const Events = () => {
           <SectionHeader
             subtitle="Upcoming Events"
             title="Find Your Perfect Stage"
-            description="Discover auditions and events tailored to your talent. From grand competitions to intimate showcases, your moment awaits."
+            description="Discover auditions and events tailored to your talent."
           />
+
+          {/* MESSAGE AREA */}
+          {(showInitialMessage || selectedEvent) && (
+            <div className="mt-6 rounded-lg border border-primary/30 bg-primary/10 px-4 py-3 text-sm text-primary">
+              {selectedEvent
+                ? `You selected "${selectedEvent.title}". Apply based on this event.`
+                : 'Please select an event to apply.'}
+            </div>
+          )}
         </div>
       </section>
 
@@ -105,7 +132,7 @@ const Events = () => {
           >
             More <span className="gradient-text">Events</span>
           </motion.h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {upcomingEvents.map((event, index) => (
               <motion.div
@@ -128,12 +155,12 @@ const Events = () => {
                     </span>
                   </div>
                 </div>
-                
+
                 <div className="p-6">
                   <h4 className="font-display text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                     {event.title}
                   </h4>
-                  
+
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Calendar className="w-4 h-4 text-primary" />
@@ -144,56 +171,20 @@ const Events = () => {
                       {event.location}
                     </div>
                   </div>
-                  
-                  <Link to="/register">
-                    <Button variant="outline" size="sm" className="w-full group/btn">
-                      Apply Now
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                    </Button>
-                  </Link>
+
+                  {/* APPLY BUTTON — NO NAVIGATION */}
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full group/btn"
+                    onClick={() => setSelectedEvent(event)}
+                  >
+                    Apply Now
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  </Button>
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter CTA */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="glass-card rounded-3xl p-8 md:p-12 text-center max-w-3xl mx-auto">
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-display text-3xl md:text-4xl font-bold mb-4"
-            >
-              Don't Miss Any <span className="gradient-text">Event</span>
-            </motion.h3>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-muted-foreground mb-6"
-            >
-              Register now and be the first to know about upcoming auditions and events.
-            </motion.p>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <Link to="/register">
-                <Button variant="hero" size="lg">
-                  Register Now
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
-            </motion.div>
           </div>
         </div>
       </section>

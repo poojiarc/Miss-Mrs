@@ -44,8 +44,8 @@ const Navbar = () => {
               <Sparkles className="w-5 h-5 text-primary-foreground" />
             </div>
             <span className="font-display text-xl font-bold tracking-tight">
-              <span className="text-foreground">Audition</span>
-              <span className="gradient-text">Elite</span>
+              <span className="text-foreground">Miss</span>{' '}
+              <span className="gradient-text">&amp; Mrs</span>
             </span>
           </Link>
 

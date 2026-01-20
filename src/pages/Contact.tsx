@@ -13,25 +13,25 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    details: 'info@auditionelite.com',
+    details: 'info@missandmrs.com',
     subtext: 'We reply within 24 hours',
   },
   {
     icon: Phone,
     title: 'Call Us',
-    details: '+91 98765 43210',
-    subtext: 'Mon-Sat, 10 AM - 6 PM',
+    details: '+91 7893230557',
+    subtext: 'Mon-Fri',
   },
   {
     icon: MapPin,
     title: 'Visit Us',
-    details: 'Mumbai, Maharashtra',
-    subtext: 'India',
+    details: 'Hyderabad,London,Melbourne',
+    subtext: 'Global',
   },
   {
     icon: Clock,
     title: 'Working Hours',
-    details: 'Monday - Saturday',
+    details: 'Monday - Friday',
     subtext: '10:00 AM - 6:00 PM',
   },
 ];
@@ -69,7 +69,7 @@ const Contact = () => {
     }
 
     // Construct WhatsApp message
-    const whatsappNumber = '919876543210'; // Replace with actual number
+    const whatsappNumber = '7893230557'; // Replace with actual number
     const message = `Hello! I'm contacting you from AuditionElite website.
 
 Name: ${formData.name.trim()}

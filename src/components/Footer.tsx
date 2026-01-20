@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Sparkles, Instagram, Youtube, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { Sparkles, Instagram, Youtube, Facebook, Mail, Phone, MapPin, Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -13,8 +13,8 @@ const Footer = () => {
                 <Sparkles className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="font-display text-xl font-bold">
-                <span className="text-foreground">Audition</span>
-                <span className="gradient-text">Elite</span>
+                <span className="text-foreground">Miss </span>
+                <span className="gradient-text"> &amp; Mrs</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -45,15 +45,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-muted-foreground text-sm">
                 <Mail className="w-4 h-4 text-primary" />
-                info@auditionelite.com
+                info@missandmrs.com
               </li>
               <li className="flex items-center gap-2 text-muted-foreground text-sm">
                 <Phone className="w-4 h-4 text-primary" />
-                +91 98765 43210
+                +91 7893230557
               </li>
               <li className="flex items-start gap-2 text-muted-foreground text-sm">
                 <MapPin className="w-4 h-4 text-primary mt-0.5" />
-                Mumbai, Maharashtra, India
+               Hyderabad,Melbourne,London Global
               </li>
             </ul>
           </div>
@@ -93,11 +93,60 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border mt-12 pt-8 text-center">
+        {/* <div className="border-t border-border mt-12 pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} AuditionElite. All rights reserved.
+            © {new Date().getFullYear()} Miss & Mrs. All rights reserved.
           </p>
-        </div>
+          <div className="border-t border-black-700 mt-4 pt-4 text-center text-sm text-black-400">
+          
+          <div className="flex justify-center items-center">
+            Made with <Heart className="inline h-4 w-4 text-red-500 mx-1" /> by
+            <a
+              href="https://staffarc.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-orange-600 hover:underline"
+            >
+              <img
+                src="https://www.staffarc.in/images/Staffarc-logo.png"
+                alt="StaffArc logo"
+                className="h-5 w-5 object-contain"
+              />
+              StaffArc
+            </a>
+          </div>
+          </div>
+        </div> */}
+        <footer className="mt-12 border-t border-border pt-8 pb-6 text-center">
+  {/* Copyright Line */}
+  <p className="text-sm text-muted-foreground">
+    © {new Date().getFullYear()} Miss & Mrs. All rights reserved.
+  </p>
+
+  {/* Attribution Line */}
+  <div className="mt-4 flex items-center justify-center gap-1.5 text-sm text-muted-foreground">
+    <span>Made with</span>
+    <Heart className="h-4 w-4 fill-red-500 text-red-500 animate-pulse" />
+    <span>by</span>
+    <a
+      href="https://staffarc.in"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-center gap-1.5 font-medium text-orange-600 transition-colors hover:text-orange-700"
+    >
+      <img
+        src="https://www.staffarc.in/images/Staffarc-logo.png"
+        alt="StaffArc Logo"
+        loading="lazy"
+        className="h-5 w-5 object-contain grayscale transition-all group-hover:grayscale-0"
+      />
+      <span className="group-hover:underline decoration-orange-600/30 underline-offset-4">
+        StaffArc
+      </span>
+    </a>
+  </div>
+</footer>
+        
       </div>
     </footer>
   );

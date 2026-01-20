@@ -104,7 +104,7 @@ const Index = () => {
               transition={{ delay: 0.5 }}
               className="flex flex-wrap gap-4"
             >
-              <Link to="/register">
+              <Link to="/events">
                 <Button variant="hero" size="xl">
                   Apply Now
                   <ArrowRight className="w-5 h-5" />

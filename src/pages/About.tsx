@@ -84,7 +84,7 @@ const About = () => {
               </h3>
               
               <p className="text-muted-foreground leading-relaxed">
-                Founded with a vision to revolutionize talent discovery in India, AuditionElite has grown from a small initiative to one of the country's most trusted platforms for aspiring artists.
+                Founded with a vision to revolutionize talent discovery in India,  Miss & Mrs has grown from a small initiative to one of the country's most trusted platforms for aspiring artists.
               </p>
               
               <p className="text-muted-foreground leading-relaxed">
